@@ -20,3 +20,13 @@ precio_medio<-df%>%
   group_by(Description)%>%
   summarize(media=mean(Price))
 precio_medio
+#numero de productos por pedido
+productos_pedido<-df%>%
+  group_by(Invoice)%>%
+  summarize(productos=sum(Quantity))
+productos_pedido
+#precio por pedido
+precio_pedido<-df%>%
+  group_by(Invoice)%>%
+  summarize(precio=sum(Price*Quantity))
+precio_pedido
