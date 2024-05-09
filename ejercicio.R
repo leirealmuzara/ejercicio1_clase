@@ -9,9 +9,14 @@ df<-read_xlsx("online_retail_II.xlsx")
 str(df)
 df$`Customer ID`<-as.character(df$`Customer ID`)
 #analisis basico de la informacion
-summary(datos)
-sum(is.na(datos))
-miss_var_summary(datos)
-dim(datos)
+summary(df)
+sum(is.na(df))
+miss_var_summary(df)
+dim(df)
 #cuantos pedidos distintos hay
-length(unique(datos$Invoice))
+length(unique(df$Invoice))
+#precio medio de producto por pedido
+precio_medio<-df%>%
+  group_by(Description)%>%
+  summarize(media=mean(Price))
+precio_medio
